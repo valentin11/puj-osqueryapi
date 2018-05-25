@@ -106,7 +106,7 @@ Request:
 ```
 Response:
 ```json
-{ Se creó el usuario exitosamente}
+{ "result":"Se creó el usuario exitosamente"}
 ```
 
 ##### Eliminar usuario.

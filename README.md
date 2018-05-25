@@ -114,7 +114,7 @@ Método: DELETE <br/>
 URL: http://localhost:5000/api/users/Valentin <br/>
 Response:
 ```json
-{ Se eliminó el usuario exitosamente}
+{ "result":"Se eliminó el usuario exitosamente"}
 ```
 
 ### 3.2 A nivel de procesos
@@ -230,7 +230,7 @@ Método: DELETE <br/>
 URL: http://localhost:5000/api/processes/1 <br/>
 Response:
 ```json
-{ Se eliminó el proceso exitosamente}
+{ "result":"Se eliminó el proceso exitosamente"}
 ```
 
 ### 3.3 A nivel de sistema operativo

@@ -13,10 +13,16 @@ def init_api_routes(app):
         app.add_url_rule('/api/processes/','getProcesses', getProcesses, methods=['GET'])
         app.add_url_rule('/api/processes/<string:processId>','getProcessById', getProcessById, methods=['GET'])
         app.add_url_rule('/api/processes/<int:processId>','deleteProcess', deleteProcess, methods=['DELETE'])
+        app.add_url_rule('/api/OS/','getOSVersion', getOSVersion, methods=['GET'])
+        app.add_url_rule('/api/kernel/','getKernelVersion', getKernelVersion, methods=['GET'])
+        app.add_url_rule('/api/memory/','getMemoryCapacity', getMemoryCapacity, methods=['GET'])
+        app.add_url_rule('/api/packages/','getInstalledPackages', getInstalledPackages, methods=['GET'])
+        app.add_url_rule('/api/packages/<string:packageName>','installPackage', installPackage, methods=['POST'])
+        app.add_url_rule('/api/packages/<string:packageName>','removePackage', removePackage, methods=['DELETE'])
 
 
 
-
+#Funciones a nivel usuarios
 def getLoggedUsers():
     return jsonify({"users": osQueryService.getLoggedUsers()})
 
@@ -36,6 +42,7 @@ def deleteUser(userName):
     else:
         return make_response("Error: No se pudo eliminar el usuario {0}.".format(userName), 401)
 
+#Funciones a nivel prcoesos
 def getProcesses():
     return jsonify({"processes": osQueryService.getProcesses()})
 
@@ -49,4 +56,22 @@ def deleteProcess(processId):
     else:
         return make_response("Error: No se pudo eliminar el el proceso {0}.".format(processId), 401)
 
+#Funciones a nivel sistema operativo
+def getOSVersion():
+    return jsonify({"os_version": osQueryService.getOSVersion()})
 
+def getKernelVersion():
+    return jsonify({"kernel_version": osQueryService.getKernelVersion()})
+
+def getMemoryCapacity():
+    return jsonify({"memory": osQueryService.getMemoryCapacity()})
+
+#Funciones a nivel paquetes
+def getInstalledPackages():
+    return jsonify({"installed_packages": osQueryService.getInstalledPackages()})
+
+def installPackage(packageName):
+    return
+
+def removePackage(packageName):
+    return

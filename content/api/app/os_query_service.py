@@ -11,7 +11,11 @@ class OsQueryService:
         return os.system(command)
 
     def killProcess(self, processId):
-        return os.kill(processId, signal.SIGKILL)
+        try:
+            os.kill(processId, signal.SIGKILL)
+            return 0
+        except OSError:
+            return 1
 
 
 

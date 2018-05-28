@@ -52,7 +52,7 @@ def getProcessById(processId):
 def deleteProcess(processId):
     #return make_response("Uid: " + str(os.geteuid()) , 200)
     if osQueryService.deleteProcess(processId):
-        return make_response("Se elimino el el proceso exitosamente.", 200)
+        return make_response("Se elimino el proceso exitosamente.", 200)
     else:
         return make_response("Error: No se pudo eliminar el el proceso {0}.".format(processId), 401)
 

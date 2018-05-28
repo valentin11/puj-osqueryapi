@@ -301,7 +301,7 @@ Response:
 
 ##### Instalar un paquete.
 Método: POST <br/>
-URL: http://localhost:5000/api/packages/[PACKAGE NAME] <br/>
+URL: http://localhost:5000/api/packages/[PACKAGE-NAME] <br/>
 Response:
 ```json
 { "result":"Se instalo el paquete exitosamente"}
@@ -309,7 +309,7 @@ Response:
 
 ##### Desinstalar un paquete.
 Método: DELETE <br/>
-URL: http://localhost:5000/api/packages/[PACKAGE NAME] <br/>
+URL: http://localhost:5000/api/packages/[PACKAGE-NAME] <br/>
 Response:
 ```json
 { "result":"Se desinstalo el paquete exitosamente"}

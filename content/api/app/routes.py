@@ -13,7 +13,7 @@ def init_api_routes(app):
         app.add_url_rule('/api/processes/','getProcesses', getProcesses, methods=['GET'])
         app.add_url_rule('/api/processes/<string:processId>','getProcessById', getProcessById, methods=['GET'])
         app.add_url_rule('/api/processes/<int:processId>','deleteProcess', deleteProcess, methods=['DELETE'])
-        app.add_url_rule('/api/OS/','getOSVersion', getOSVersion, methods=['GET'])
+        app.add_url_rule('/api/os/','getOSVersion', getOSVersion, methods=['GET'])
         app.add_url_rule('/api/kernel/','getKernelVersion', getKernelVersion, methods=['GET'])
         app.add_url_rule('/api/memory/','getMemoryCapacity', getMemoryCapacity, methods=['GET'])
         app.add_url_rule('/api/packages/','getInstalledPackages', getInstalledPackages, methods=['GET'])
@@ -71,7 +71,13 @@ def getInstalledPackages():
     return jsonify({"installed_packages": osQueryService.getInstalledPackages()})
 
 def installPackage(packageName):
-    return
+    if osQueryService.installPackage(packageName)==0:
+        return make_response("Se instalo el paquete exitosamente.", 200)
+    else:
+        return make_response("Error: No se pudo instalar el paquete {0}.".format(packageName), 401)
 
 def removePackage(packageName):
-    return
+    if osQueryService.removePackage(packageName)==0:
+        return make_response("Se desinstalo el paquete exitosamente.", 200)
+    else:
+        return make_response("Error: No se pudo desinstalar el paquete {0}.".format(packageName), 401)

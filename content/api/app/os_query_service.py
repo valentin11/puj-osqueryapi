@@ -1,4 +1,4 @@
-import osquery, os, signal
+import osquery, os, signal, subprocess32 as subprocess
 
 class OsQueryService:
     def makeQuery(self, query):
@@ -11,7 +11,7 @@ class OsQueryService:
         return os.system(command)
 
     def killProcess(self, processId):
-        return os.kill(processId, signal.SIGTERM)
+        return os.kill(processId, signal.SIGKILL)
 
 
 
@@ -53,21 +53,21 @@ class OsQueryService:
 
 
 # Queries a nivel de sistema operativo.
-def getOSVersion():
-    return
+    def getOSVersion(self):
+        return self.makeQuery("SELECT version FROM os_version")
 
-def getKernelVersion():
-    return
+    def getKernelVersion(self):
+        return self.makeQuery("SELECT version FROM kernel_info")
 
-def getMemoryCapacity():
-    return
+    def getMemoryCapacity(self):
+        return self.makeQuery("SELECT memory_total FROM memory_info")
 
 # Queries a nivel de paquetes instalados.
-def getInstalledPackages():
-    return
+    def getInstalledPackages(self):
+        return self.makeQuery("SELECT * FROM deb_packages")
 
-def installPackage(packageId):
-    return
+    def installPackage(self, packageName):
+        return self.runCommand("apt-get install -y {0}".format(packageName))
 
-def removePackage(packageId):
-    return
+    def removePackage(self, packageName):
+        return self.runCommand("apt-get remove -y {0}".format(packageName))

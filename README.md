@@ -227,7 +227,7 @@ Response:
 
 ##### Eliminar proceso.
 Método: DELETE <br/>
-URL: http://localhost:5000/api/processes/1 <br/>
+URL: http://localhost:5000/api/processes/[PROCESS ID] <br/>
 Response:
 ```json
 { "result":"Se eliminó el proceso exitosamente"}
@@ -235,4 +235,82 @@ Response:
 
 ### 3.3 A nivel de sistema operativo
 
+##### Conocer la versión del sistema operativo.
+Método: GET <br/>
+URL: http://localhost:5000/api/os/ <br/>
+Response:
+```json
+{
+  "os_version": [
+    {
+      "version": "18.04 LTS (Bionic Beaver)"
+    }
+  ]
+}
+```
+
+##### Conocer la versión del kernel instalado.
+Método: GET <br/>
+URL: http://localhost:5000/api/kernel/ <br/>
+Response:
+```json
+{
+  "kernel_version": [
+    {
+      "version": "4.4.0-127-generic"
+    }
+  ]
+}
+```
+
+##### Conocer la cantidad de memoria instalada.
+Método: GET <br/>
+URL: http://localhost:5000/api/memory/ <br/>
+Response:
+```json
+{
+  "memory": [
+    {
+      "memory_total": "2071752704"
+    }
+  ]
+}
+```
+
 ### 3.4 A nivel de paquetes instalados
+
+##### Conocer los paquetes instalados.
+Método: GET <br/>
+URL: http://localhost:5000/api/packages/ <br/>
+Response:
+```json
+{
+  "installed_packages": [
+    {
+      "arch": "all", 
+      "name": "adduser", 
+      "revision": "", 
+      "size": "624", 
+      "source": "", 
+      "version": "3.116ubuntu1"
+    },
+    ...
+  ]
+}
+```
+
+##### Instalar un paquete.
+Método: POST <br/>
+URL: http://localhost:5000/api/packages/[PACKAGE NAME] <br/>
+Response:
+```json
+{ "result":"Se instalo el paquete exitosamente"}
+```
+
+##### Desinstalar un paquete.
+Método: DELETE <br/>
+URL: http://localhost:5000/api/packages/[PACKAGE NAME] <br/>
+Response:
+```json
+{ "result":"Se desinstalo el paquete exitosamente"}
+```

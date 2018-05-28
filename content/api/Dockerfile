@@ -7,9 +7,10 @@ FROM ubuntu:latest
 
 RUN apt-get update && apt-get -y install vim git jq curl sudo wget python python-pip
 RUN pip install --upgrade pip
-COPY . /app
-WORKDIR /app
+#COPY . /app
+COPY . /
 RUN pip install -r requirements.txt
+WORKDIR /app
 ENTRYPOINT ["python"]
 CMD ["app.py"]
 

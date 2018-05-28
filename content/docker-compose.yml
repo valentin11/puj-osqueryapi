@@ -3,4 +3,5 @@ web:
   ports:
    - "5000:5000"
   volumes:
-   - .:/code
+   #- .:/code
+   - ./api/app:/app
